@@ -1,0 +1,25 @@
+@page "/companies"
+
+<PageTitle>Companies</PageTitle>
+<RadzenRow>
+    <RadzenColumn Size="12">
+        <RadzenText Text="Companies" TextStyle="TextStyle.H3" TagName="TagName.H1" />
+    </RadzenColumn>
+</RadzenRow>
+<RadzenDataGrid TItem="EvilCompanies.Models.EvilApi.GetAll" Data="@getAlls" ColumnWidth="200px" AllowSorting="true" AllowPaging="true" AllowFiltering="true" RowClick="@DataGrid0RowClick">
+    <Columns>
+        <RadzenDataGridColumn TItem="EvilCompanies.Models.EvilApi.GetAll" Title="Logo" Frozen="true" Sortable="false" Filterable="false" Width="80px" TextAlign="TextAlign.Center" >
+                            <Template Context="data">
+                                <RadzenImage Path="@data.EvilLogo" class="rz-gravatar" />
+                            </Template>
+                        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="EvilCompanies.Models.EvilApi.GetAll" Property="Id" Title="Id" />
+        <RadzenDataGridColumn TItem="EvilCompanies.Models.EvilApi.GetAll" Property="EvilCompanyName" Title="EvilCompanyName" />
+        <RadzenDataGridColumn TItem="EvilCompanies.Models.EvilApi.GetAll" Property="EvilLocation" Title="EvilLocation" />
+        <RadzenDataGridColumn TItem="EvilCompanies.Models.EvilApi.GetAll" Property="EvilnessRanking" Title="EvilnessRanking" />
+        <RadzenDataGridColumn TItem="EvilCompanies.Models.EvilApi.GetAll" Property="EvilPhone" Title="EvilPhone" />
+        <RadzenDataGridColumn TItem="EvilCompanies.Models.EvilApi.GetAll" Property="EvilTakeoverDate" Title="EvilTakeoverDate" />
+        <RadzenDataGridColumn TItem="EvilCompanies.Models.EvilApi.GetAll" Property="EvilWebsite" Title="EvilWebsite" />
+        <RadzenDataGridColumn TItem="EvilCompanies.Models.EvilApi.GetAll" Property="EvilWorldDominationPlan" Title="EvilWorldDominationPlan" />
+    </Columns>
+</RadzenDataGrid>

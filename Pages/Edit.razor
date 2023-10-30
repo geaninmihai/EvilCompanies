@@ -1,0 +1,105 @@
+@page "/edit"
+
+<PageTitle>Edit</PageTitle>
+<RadzenRow>
+    <RadzenColumn Size="12">
+    </RadzenColumn>
+</RadzenRow>
+<RadzenTemplateForm TItem="EvilCompanies.Models.EvilApi.GetAll" Data="@getAll">
+    <RadzenRow style="margin-bottom: 1rem">
+        <RadzenColumn SizeMD="3">
+            <RadzenLabel Text="Id" Component="Id" style="width: 100%" />
+        </RadzenColumn>
+        <RadzenColumn SizeMD="9">
+          <RadzenNumeric style="display: block; width: 100%" @bind-Value="getAll.Id" Name="Id" />
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow style="margin-bottom: 1rem">
+        <RadzenColumn SizeMD="3">
+            <RadzenLabel Text="Evil Logo" Component="EvilLogo" style="width: 100%" />
+        </RadzenColumn>
+        <RadzenColumn SizeMD="9">
+          <RadzenTextBox style="display: block; width: 100%" @bind-Value="getAll.EvilLogo" Name="EvilLogo" />
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow style="margin-bottom: 1rem">
+        <RadzenColumn SizeMD="3">
+            <RadzenLabel Text="Evil Phone" Component="EvilPhone" style="width: 100%" />
+        </RadzenColumn>
+        <RadzenColumn SizeMD="9">
+          <RadzenTextBox style="display: block; width: 100%" @bind-Value="getAll.EvilPhone" Name="EvilPhone" />
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow style="margin-bottom: 1rem">
+        <RadzenColumn SizeMD="3">
+            <RadzenLabel Text="Evil Website" Component="EvilWebsite" style="width: 100%" />
+        </RadzenColumn>
+        <RadzenColumn SizeMD="9">
+          <RadzenTextBox style="display: block; width: 100%" @bind-Value="getAll.EvilWebsite" Name="EvilWebsite" />
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow style="margin-bottom: 1rem">
+        <RadzenColumn SizeMD="3">
+            <RadzenLabel Text="Evil Location" Component="EvilLocation" style="width: 100%" />
+        </RadzenColumn>
+        <RadzenColumn SizeMD="9">
+          <RadzenTextBox style="display: block; width: 100%" @bind-Value="getAll.EvilLocation" Name="EvilLocation" />
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow style="margin-bottom: 1rem">
+        <RadzenColumn SizeMD="3">
+            <RadzenLabel Text="Evil Company Name" Component="EvilCompanyName" style="width: 100%" />
+        </RadzenColumn>
+        <RadzenColumn SizeMD="9">
+          <RadzenTextBox style="display: block; width: 100%" @bind-Value="getAll.EvilCompanyName" Name="EvilCompanyName" />
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow style="margin-bottom: 1rem">
+        <RadzenColumn SizeMD="3">
+            <RadzenLabel Text="Evilness Ranking" Component="EvilnessRanking" style="width: 100%" />
+        </RadzenColumn>
+        <RadzenColumn SizeMD="9">
+          <RadzenTextBox style="display: block; width: 100%" @bind-Value="getAll.EvilnessRanking" Name="EvilnessRanking" />
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow style="margin-bottom: 1rem">
+        <RadzenColumn SizeMD="3">
+            <RadzenLabel Text="Evil Takeover Date" Component="EvilTakeoverDate" style="width: 100%" />
+        </RadzenColumn>
+        <RadzenColumn SizeMD="9">
+          <RadzenTextBox style="display: block; width: 100%" @bind-Value="getAll.EvilTakeoverDate" Name="EvilTakeoverDate" />
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenRow style="margin-bottom: 1rem">
+        <RadzenColumn SizeMD="3">
+            <RadzenLabel Text="Evil World Domination Plan" Component="EvilWorldDominationPlan" style="width: 100%" />
+        </RadzenColumn>
+        <RadzenColumn SizeMD="9">
+          <RadzenTextBox style="display: block; width: 100%" @bind-Value="getAll.EvilWorldDominationPlan" Name="EvilWorldDominationPlan" />
+        </RadzenColumn>
+    </RadzenRow>
+
+        <RadzenRow style="margin-bottom: 1rem">
+        <RadzenColumn SizeMD="6" AlignItems="AlignItems.Start" JustifyContent="JustifyContent.Start">
+            <RadzenButton Icon="save" Click=@OnSave Text="Save" />
+        </RadzenColumn>
+        <RadzenColumn SizeMD="6" AlignItems="AlignItems.End" JustifyContent="JustifyContent.End" class="rz-text-align-end">
+            <RadzenButton Icon="delete" Text="Delete"  Click=@OnDelete class="rz-text-align-end" Style="background-color: #ff2800"  />
+        </RadzenColumn>
+    </RadzenRow>
+
+</RadzenTemplateForm>
+
+@code {
+    void OnSave()
+    {
+        EvilApiService.Edit(getAll.Id, getAll);
+        NavigationManager.NavigateTo("Companies", true);
+    }
+
+    void OnDelete()
+    {
+        EvilApiService.Delete(getAll.Id);
+        NavigationManager.NavigateTo("Companies", true);
+    }
+}
